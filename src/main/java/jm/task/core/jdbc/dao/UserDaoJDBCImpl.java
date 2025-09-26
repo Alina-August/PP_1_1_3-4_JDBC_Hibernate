@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    public UserDaoJDBCImpl() {}
+    public UserDaoJDBCImpl() {
+
+    }
 
     private static final String CREATE_SQL =
             "CREATE TABLE IF NOT EXISTS users (" +
@@ -17,11 +19,11 @@ public class UserDaoJDBCImpl implements UserDao {
                     " lastName VARCHAR(50) NOT NULL," +
                     " age TINYINT NOT NULL" +
                     ")";
-    private static final String DROP_SQL   = "DROP TABLE IF EXISTS users";
+    private static final String DROP_SQL = "DROP TABLE IF EXISTS users";
     private static final String INSERT_SQL = "INSERT INTO users(name, lastName, age) VALUES(?,?,?)";
     private static final String DELETE_SQL = "DELETE FROM users WHERE id=?";
     private static final String SELECT_SQL = "SELECT id, name, lastName, age FROM users";
-    private static final String TRUNC_SQL  = "TRUNCATE TABLE users";
+    private static final String TRUNC_SQL = "TRUNCATE TABLE users";
 
     @Override
     public void createUsersTable() {
@@ -70,7 +72,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> result = new ArrayList<>();      // ВНИМАНИЕ: не null
+        List<User> result = new ArrayList<>();
         try (Connection c = Util.getConnection();
              Statement st = c.createStatement();
              ResultSet rs = st.executeQuery(SELECT_SQL)) {
@@ -92,7 +94,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         try (Connection c = Util.getConnection();
              Statement st = c.createStatement()) {
-            st.executeUpdate(TRUNC_SQL); // сбрасывает автоинкремент — тесты это любят
+            st.executeUpdate(TRUNC_SQL);
         } catch (SQLException e) {
             throw new RuntimeException("cleanUsersTable failed", e);
         }
