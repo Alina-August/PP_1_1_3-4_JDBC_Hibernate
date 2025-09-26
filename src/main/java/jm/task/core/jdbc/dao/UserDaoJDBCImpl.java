@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    public UserDaoJDBCImpl() {
-
-    }
 
     private static final String CREATE_SQL =
             "CREATE TABLE IF NOT EXISTS users (" +
@@ -24,6 +21,9 @@ public class UserDaoJDBCImpl implements UserDao {
     private static final String DELETE_SQL = "DELETE FROM users WHERE id=?";
     private static final String SELECT_SQL = "SELECT id, name, lastName, age FROM users";
     private static final String TRUNC_SQL = "TRUNCATE TABLE users";
+
+    public UserDaoJDBCImpl() {
+    }
 
     @Override
     public void createUsersTable() {
