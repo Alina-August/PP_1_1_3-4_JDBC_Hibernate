@@ -2,9 +2,12 @@
 .idea/
 *.iml
 
-# Maven
+# Maven target
 target/
 
-# OS
+# Logs
+*.log
+
+# OS мусор
 .DS_Store
 Thumbs.db
