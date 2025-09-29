@@ -35,6 +35,13 @@
                 <artifactId>javax.persistence-api</artifactId>
                 <version>2.2</version>
             </dependency>
+
+        <!-- Hibernate Core 5 (под javax.*, а не jakarta) -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
         </dependencies>
 
     <build>
